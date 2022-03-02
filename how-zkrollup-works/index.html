@@ -56,7 +56,7 @@
 				</section>
 				<section>
 					<h2>Why zkRollups?</h2>
-					<img data-src="assets/trilema.jpeg">
+					<img data-src="assets/trilema.png">
 
 					<aside class="notes">
 						I guess that you all know the blockchain trilema, but anyway:
@@ -107,6 +107,11 @@
 						<li>Turn based: SC decide who can add blocks at a given time</li>
 						<li>Proof of Efficiency</li>
 					</ul>
+
+					<aside class="notes">
+						Centralization is a bit more complicated... it actually depends on the consensus mechanism, in other words
+						from who the SC accepts the blocks. This can be done in different ways, some examples: (explain bullet points)
+					</aside>
 				</section>
 				<section>
 					<h2>Proof of Donation</h2>
@@ -115,6 +120,12 @@
 						<li>Time slots are auctioned to best bidder</li>
 						<li>Auction winner can send blocks in a specific time window</li>
 					</ul>
+
+					<aside class="notes">
+						PoD is the implementation we used for Hermez 1.0, it's basically an auction where participants
+						bid to gain right to mine blocks for given time slots.
+						We also included a deathline that when exceeded opened the slot for everyone.
+					</aside>
 				</section>
 				<section>
 					<h2>Proof of Efficiency</h2>
@@ -123,32 +134,63 @@
 						<li>Both steps are 100% permissionless (anyone, anytime)</li>
 						<li>Two states: virtual vs consolidated</li>
 					</ul>
+
+					<aside class="notes">
+						PoE is what we're working on for Hermez 2.0. The main idea is to split the process of making data available
+						and proofing state transitions. Both steps are truly decentralized, in the sense that anyone at any point in time
+						can participate in them. 
+					</aside>
 				</section>
 				<section>
 					<h2>Proof of Efficiency</h2>
 					<img data-src="assets/PoE.drawio.png">
+
+					<aside class="notes">
+						explain diagram
+					</aside>
 				</section>
 				<section>
 					<h3>Solutions - Scalability</h3>
 					<ul>
 						<li>Latency / Finality: L2 >= L1</li>
 						<li>Throughput / txs/s: limited by data availability</li>
+						<li>max txs/s = L1 block size / L2 tx size / L1 block time</li>
 					</ul>
+
+					<aside class="notes">
+						We've seen that we can actually keep the decentralization and security properties of the L1 without huge compromises
+						Now the key question is can we actually provide the promised scalability?
+
+						IMO there is two key metrics for scalability: bandwith and latency.
+						In terms of latency, we still relay on L1
+						However on throughput, we're basically limited to the block space: so how many bytes do we have to store the data availability...
+					</aside>
 				</section>
 				<section>
 					<h2>Implementation</h2>
 					<img data-src="assets/implementation.drawio.png">
+
+					<aside class="notes">
+						explain diagram
+					</aside>
 				</section>
 				<section>
 					<h2>Interesting resources</h2>
 					<ul>
-						<li><a href="https://arnaubennassar.github.io/slides">arnaubennassar.github.io/slides</a></li>
-						<li><a href="https://arnaubennassar.github.io/slides">arnaubennassar.github.io/slides</a></li>
-						<li><a href="https://arnaubennassar.github.io/slides">arnaubennassar.github.io/slides</a></li>
+						<li><a href="https://ethresear.ch/t/proof-of-efficiency-a-new-consensus-mechanism-for-zk-rollups/11988">
+							Proof of Efficiency
+						</a></li>
+						<li><a href="https://www.youtube.com/watch?v=-kfH4U84VUo">
+							zkEVM and rollup bridge 
+						</a></li>
+						<li><a href="https://github.com/hermeznetwork">
+							Polygon Hermez GitHub
+						</a></li>
 					</ul>
 				</section>
 				<section>
 					<h1>We're hiring!</h1>
+					<img data-src="assets/polygon-hermez.png">
 				</section>
 				<section>
 					<h1>Q&A</h1>
