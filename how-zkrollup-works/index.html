@@ -6,12 +6,12 @@
 
 		<title>zkRollup slides</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="../revealjs/dist/reset.css">
+		<link rel="stylesheet" href="../revealjs/dist/reveal.css">
+		<link rel="stylesheet" href="theme/polygon.css">
 
 		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="../revealjs/plugin/highlight/monokai.css">
 	</head>
 	<body>
 		<div class="reveal">
@@ -21,43 +21,82 @@
 					<br/>
 					<br/>
 					<h3>How zkRollup works</h3>
+					<img data-src="assets/polygon-hermez.png">
 					<br/>
 					<br/>
 					<br/>
 					<p>
 						<small>Find the slides at <a href="https://arnaubennassar.github.io/slides">arnaubennassar.github.io/slides</a></small>
 					</p>
+
+					<aside class="notes">
+						GM, I'm AB backend team lead @ PH, and today Im here to talk about how ZKR work.
+					</aside>
 				</section>
 				<section>
 					<h2>Agenda</h2>
 					<ol>
 						<li>Why zkRollups?</li>
-						<li>Abstract implementation</li>
+						<li>How do they work?</li>
 						<li>Problems</li>
 						<li>Solutions</li>
 						<li>Implementation</li>
 					</ol>
+
+					<aside class="notes">
+						We'll start with a short intro on why are rollups needed and how do they work in general.
+						<br/>
+						Then I'm going to give an opinionated answer on if rollups can actually solve the intended problem.
+						<br/>
+						Finally I'll explain how such a system can be implemented.
+						<br/>
+						DISCLAIMER: there are many implementation decisions that can be made, some of the stuff that I'll mention refers to how we're doing it at PH.
+						Also this talk we'll treat the ZK stuff as a black box. Im not expert in ZK, and I'm sure there is people in this audience that knows way more than me about this topic
+					</aside>
 				</section>
 				<section>
 					<h2>Why zkRollups?</h2>
 					<img data-src="assets/trilema.jpeg">
+
+					<aside class="notes">
+						I guess that you all know the blockchain trilema, but anyway:
+						<br/>
+						The idea is that you cannot have at the same time a system that is fully secure, decentralized, and scalable.
+						<br/>
+						You've to compromise in one of this areas.
+						<br/>
+						Rollups are supposed to solve this by borrowing the security and decentralization from a L1, and bringing scalability on top.
+					</aside>
 				</section>
 				<section>
-					<h2>Abstract implementation</h2>
+					<h2>How do they work?</h2>
 					<img data-src="assets/abstract-implementation.drawio.png">
+
+					<aside class="notes">
+						So, how they work? [explain diagram]
+					</aside>
 				</section>
 				<section>
 					<h2>Problems</h2>
 					<ol>
 						<li>Security?</li>
 						<li>Centralization?</li>
-						<li>Censorship?</li>
-						<li>Unstoppable?</li>
+						<li>Scalable?</li>
 					</ol>
+
+					<aside class="notes">
+						Can the trilema be really fixed by rollups? Let's analyze them one by one...
+					</aside>
 				</section>
 				<section>
 					<h3>Solutions - Security</h3>
 					<h1>audit ZK and smart contracts</h1>
+
+					<aside class="notes">
+						In terms of security rollups need to add SCs that contain the ZK verifier,
+						so as long as those are well audited and tested we could say that yes, we inherit 
+						the security of L1... Just like any other SC, [hironic] and as you know, no SC has been ever hacked. 
+					</aside>
 				</section>
 				<section>
 					<h3>Solutions - Centralization</h3>
@@ -71,17 +110,56 @@
 				</section>
 				<section>
 					<h2>Proof of Donation</h2>
+					<ul>
+						<li>Implementation of a "turn based" mechanism used in Hermez Network 1.0</li>
+						<li>Time slots are auctioned to best bidder</li>
+						<li>Auction winner can send blocks in a specific time window</li>
+					</ul>
 				</section>
 				<section>
 					<h2>Proof of Efficiency</h2>
+					<ul>
+						<li>Split the sequence and the proofing in two steps</li>
+						<li>Both steps are 100% permissionless (anyone, anytime)</li>
+						<li>Two states: virtual vs consolidated</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Proof of Efficiency</h2>
+					<img data-src="assets/PoE.drawio.png">
+				</section>
+				<section>
+					<h3>Solutions - Scalability</h3>
+					<ul>
+						<li>Latency / Finality: L2 >= L1</li>
+						<li>Throughput / txs/s: limited by data availability</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Implementation</h2>
+					<img data-src="assets/implementation.drawio.png">
+				</section>
+				<section>
+					<h2>Interesting resources</h2>
+					<ul>
+						<li><a href="https://arnaubennassar.github.io/slides">arnaubennassar.github.io/slides</a></li>
+						<li><a href="https://arnaubennassar.github.io/slides">arnaubennassar.github.io/slides</a></li>
+						<li><a href="https://arnaubennassar.github.io/slides">arnaubennassar.github.io/slides</a></li>
+					</ul>
+				</section>
+				<section>
+					<h1>We're hiring!</h1>
+				</section>
+				<section>
+					<h1>Q&A</h1>
 				</section>
 			</div>
 		</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
+		<script src="../revealjs/dist/reveal.js"></script>
+		<script src="../revealjs/plugin/notes/notes.js"></script>
+		<script src="../revealjs/plugin/markdown/markdown.js"></script>
+		<script src="../revealjs/plugin/highlight/highlight.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
